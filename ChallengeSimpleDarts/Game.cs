@@ -40,7 +40,7 @@ namespace ChallengeSimpleDarts
             {
                 Dart dart = new Dart(Random);
                 dart.Throw();
-                player.Score += dart.Score;
+                Score.CalculateScore(player, dart);
             }
             
         }

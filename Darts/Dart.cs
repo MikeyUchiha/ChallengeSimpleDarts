@@ -21,9 +21,8 @@ namespace Darts
         }
         public void Throw()
         {
-            int dartBoardSection = CalculateDartBoardSection();
-            Score = dartBoardSection;
-            ProcessThrowAction(dartBoardSection);
+            Score = CalculateDartBoardSection();
+            ProcessThrowAction(Score);
         }
 
         private int CalculateDartBoardSection()
@@ -37,31 +36,6 @@ namespace Darts
                 DetermineTheBullseyeLandedOn();
             else
                 DetermineTheBandLandedOn();
-        }
-
-        private void CalculateScore(int score)
-        {
-            score = CalculateBullseyeScore(score);
-            score = CalculateBandScore(score);
-            Score = score;
-        }
-
-        private int CalculateBullseyeScore(int score)
-        {
-            if (score == 0 && IsInnerBullseye)
-                score = 50;
-            if (score == 0 && IsOuterBullseye)
-                score = 25;
-            return score;
-        }
-
-        private int CalculateBandScore(int score)
-        {
-            if (IsDoubleBand)
-                score = score * 2;
-            if (IsTripleBand)
-                score = score * 3;
-            return score;
         }
 
         private void DetermineTheBullseyeLandedOn()
